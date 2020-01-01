@@ -16,6 +16,18 @@ const ContactUs: React.FC<IProps> = props => {
         props.onNameChange(e.currentTarget.value);
     };
 
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        props.onEmailChange(e.currentTarget.value);
+    };
+
+    const handleReasonChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        props.onReasonChange(e.currentTarget.value);
+    };
+
+    const handleNotesChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        props.onNotesChange(e.currentTarget.value);
+    };
+
     return (
         <form className="form" noValidate={true}>
             <div className="form-group">
@@ -25,6 +37,40 @@ const ContactUs: React.FC<IProps> = props => {
                     id="name"
                     value={props.name}
                     onChange={handleNameChange}
+                />
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="email">Your email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    value={props.email}
+                    onChange={handleEmailChange}
+                />
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="reason">Reason you need to contact us</label>
+                <select
+                    id="reason"
+                    value={props.reason}
+                    onChange={handleReasonChange}
+                >
+                    <option value="Marketing">Marketing</option>
+                    <option value="Support">Support</option>
+                    <option value="Feedback">Feedback</option>
+                    <option value="Jobs">Jobs</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="notes">Additional notes</label>
+                <textarea
+                    id="notes"
+                    value={props.notes}
+                    onChange={handleNotesChange}
                 />
             </div>
         </form>
